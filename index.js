@@ -102,7 +102,14 @@ app.get('/api/users/:_id/logs', (req, res) => {
     _id: user._id,
     username: user.username,
     count: user.log.length,
-    log,
+    log: log.map((excercise) => {
+      return {
+        _id: excercise._id,
+        description: excercise.description,
+        duration: excercise.duration,
+        date: excercise.date.toDateString(),
+      }
+    }),
   })
 
 })
